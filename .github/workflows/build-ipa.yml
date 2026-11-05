@@ -31,9 +31,6 @@ jobs:
             CODE_SIGNING_ALLOWED=NO \
             CODE_SIGNING_REQUIRED=NO \
             DEVELOPMENT_TEAM= \
-            PRODUCT_BUNDLE_IDENTIFIER=com.buse.glassign \
-            PRODUCT_NAME=GlassSign \
-            INFOPLIST_KEY_CFBundleDisplayName=GlassSign \
             build
 
       - name: Package IPA
