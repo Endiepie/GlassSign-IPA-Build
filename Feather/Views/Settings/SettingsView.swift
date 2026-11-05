@@ -40,6 +40,37 @@ struct SettingsView: View {
 	var body: some View {
 		NBNavigationView(.localized("Settings")) {
 			Form {
+				Section {
+					VStack(alignment: .leading, spacing: 14) {
+						HStack(spacing: 12) {
+							Image(systemName: "square.stack.3d.up.fill")
+								.font(.system(size: 22, weight: .semibold))
+								.foregroundStyle(.white)
+								.frame(width: 48, height: 48)
+								.background(LinearGradient(colors: [Color.cyan, Color.blue, Color.purple], startPoint: .topLeading, endPoint: .bottomTrailing), in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+							VStack(alignment: .leading, spacing: 3) {
+								Text("GLASSSIGN").font(.caption.weight(.bold)).tracking(1.5)
+								Text(.localized("Your signing studio")).font(.subheadline).foregroundStyle(.secondary)
+							}
+							Spacer()
+							Image(systemName: "checkmark.shield.fill").font(.title3).foregroundStyle(.mint)
+						}
+						HStack(spacing: 8) {
+							Label(.localized("Private by design"), systemImage: "lock.fill")
+							Spacer()
+							Text("IPA · SIGN · INSTALL").tracking(0.8)
+						}
+						.font(.caption2.weight(.semibold)).foregroundStyle(.secondary)
+					}
+					.padding(.vertical, 7)
+					.listRowBackground {
+						if #available(iOS 26.0, *) {
+							RoundedRectangle(cornerRadius: 24, style: .continuous).fill(.clear).glassEffect(.regular, in: .rect(cornerRadius: 24))
+						} else {
+							RoundedRectangle(cornerRadius: 20, style: .continuous).fill(.ultraThinMaterial)
+						}
+					}
+				}
 				_feedback()
                 
 				Section {

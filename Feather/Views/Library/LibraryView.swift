@@ -216,7 +216,9 @@ struct LibraryView: View {
 			}
 			.sheet(isPresented: $_isImportingPresenting) {
 				FileImporterRepresentableView(
-					allowedContentTypes:  [.ipa, .tipa],
+					// An IPA is a ZIP archive with a .ipa extension. Accept .zip too so
+					// users can import IPA archives shared with a generic ZIP suffix.
+					allowedContentTypes: [.ipa, .tipa, .zip],
 					allowsMultipleSelection: true,
 					onDocumentsPicked: { urls in
 						guard !urls.isEmpty else { return }
