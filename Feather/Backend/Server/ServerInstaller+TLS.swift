@@ -45,6 +45,12 @@ extension ServerInstaller {
 	// MARK: Files/IP
 	func sni() -> String {
 		let localhost = "127.0.0.1"
+		let customHost = UserDefaults.standard.string(forKey: "GlassSign.serverHostOverride")?
+			.trimmingCharacters(in: .whitespacesAndNewlines)
+			.trimmingCharacters(in: CharacterSet(charactersIn: "/"))
+		if let customHost, !customHost.isEmpty {
+			return customHost
+		}
 		
 		if getServerMethod() == 1 {
 			return !self.getIPFix()

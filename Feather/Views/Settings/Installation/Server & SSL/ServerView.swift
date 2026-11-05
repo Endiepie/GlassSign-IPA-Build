@@ -50,6 +50,7 @@ extension ServerView {
 struct ServerView: View {
 	@AppStorage("Feather.ipFix") private var _ipFix: Bool = false
 	@AppStorage("Feather.serverMethod") private var _serverMethod: Int = 0
+	@AppStorage("GlassSign.serverHostOverride") private var _serverHostOverride: String = ""
 	private let _serverMethods: [String] = [.localized("Fully Local"), .localized("Semi Local")]
 	
 	private let _dataService = NBFetchService()
@@ -66,6 +67,13 @@ struct ServerView: View {
 				}
 				Toggle(.localized("Only use localhost address"), systemImage: "lifepreserver", isOn: $_ipFix)
 					.disabled(_serverMethod != 1)
+				TextField("Server host / DNS name", text: $_serverHostOverride)
+					.textInputAutocapitalization(.never)
+					.autocorrectionDisabled()
+					.keyboardType(.URL)
+				Text(.localized("Optional host name for install links. Leave empty to use GlassSign’s automatic address. This does not change iOS system DNS."))
+					.font(.caption)
+					.foregroundStyle(.secondary)
 			}
 			
 			Section {

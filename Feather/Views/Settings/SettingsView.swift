@@ -63,13 +63,14 @@ struct SettingsView: View {
 						.font(.caption2.weight(.semibold)).foregroundStyle(.secondary)
 					}
 					.padding(.vertical, 7)
-					.listRowBackground {
+					.background {
 						if #available(iOS 26.0, *) {
 							RoundedRectangle(cornerRadius: 24, style: .continuous).fill(.clear).glassEffect(.regular, in: .rect(cornerRadius: 24))
 						} else {
 							RoundedRectangle(cornerRadius: 20, style: .continuous).fill(.ultraThinMaterial)
 						}
 					}
+					.listRowBackground(Color.clear)
 				}
 				_feedback()
                 
