@@ -35,7 +35,7 @@ jobs:
 
       - name: Package IPA
         run: |
-          APP_PATH="$RUNNER_TEMP/DerivedData/Build/Products/Release-iphoneos/GlassSign.app"
+          APP_PATH="$GITHUB_WORKSPACE/_build/Applications/GlassSign.app"
           test -d "$APP_PATH"
           mkdir -p "$RUNNER_TEMP/ipa/Payload"
           cp -R "$APP_PATH" "$RUNNER_TEMP/ipa/Payload/GlassSign.app"
